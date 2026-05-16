@@ -42,3 +42,6 @@ END;
 
 SELECT * FROM dbo.fn_quannguc_select (13000000) ORDER BY Luong ASC;
 
+--Cau 4: Function - Cho biết số lượng phòng giam theo mã khu vực 
+
+
