@@ -5,12 +5,19 @@
 USE QLNT;
 
 --Truy vấn với mệnh đề having (5 câu)
---1. Tìm những tù nhân có từ 2 thân nhân trở lên
+--1. Tìm tù nhân có từ 2 thân nhân trở lên
 SELECT TN.MaTuNhan, TN.HoTen, COUNT(TNH.MaThanNhan) AS SoLuongThanNhan
 FROM TUNHAN TN
 JOIN THANNHAN TNH ON TNH.MaTuNhan = TN.MaTuNhan
 GROUP BY TN.MaTuNhan, TN.HoTen
 HAVING COUNT(TNH.MaThanNhan) >= 2;
+
+--2. Tìm tù nhân có lần thăm nuôi gần nhất trong năm 2026
+SELECT TN.MaTuNhan, TN.HoTen, MAX(TNU.NgayTham) AS LanThamGanNhat
+FROM TUNHAN TN
+JOIN THAMNUOI TNU ON TNU.MaTuNhan = TN.MaTuNhan
+GROUP BY TN.MaTuNhan, TN.HoTen
+HAVING MAX(TNU.NgayTham) >= '2026-01-01';
 
 
 
