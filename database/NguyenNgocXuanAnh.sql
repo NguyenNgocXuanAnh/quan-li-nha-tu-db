@@ -24,6 +24,22 @@ END;
 
 sp_tunhan_select;
 
+--Cau 4: Function - Cho biết số lượng phòng giam theo mã khu vực 
+CREATE FUNCTION fn_soluong_select (@MaKV varchar(10)) 
+RETURNS int
+AS BEGIN
+    DECLARE @SoLuong int;
+    SELECT @SoLuong = COUNT(MaPhong)  
+	FROM PHONGGIAM 
+	WHERE MaKV  = @MaKV;
+    RETURN @SoLuong;
+END;
+
+SELECT N'Số phòng giam khu A là:' AS ThongBao, dbo.fn_soluong_select ('KVA') AS SoLuong;
+SELECT N'Số phòng giam khu B là:' AS ThongBao, dbo.fn_soluong_select ('KVB') AS SoLuong;
+SELECT N'Số phòng giam khu C là:' AS ThongBao, dbo.fn_soluong_select ('KVC') AS SoLuong;
+SELECT N'Số phòng giam khu D là:' AS ThongBao, dbo.fn_soluong_select ('KVD') AS SoLuong;
+
 --Cau 4: Function - Tìm những quản ngục có mức lương cao hơn mức lương cần tìm
 CREATE FUNCTION fn_quannguc_select (@Luong decimal(10,2)) RETURNS 
 @RETURNTABLE TABLE 
@@ -42,6 +58,5 @@ END;
 
 SELECT * FROM dbo.fn_quannguc_select (13000000) ORDER BY Luong ASC;
 
---Cau 4: Function - Cho biết số lượng phòng giam theo mã khu vực 
 
 
