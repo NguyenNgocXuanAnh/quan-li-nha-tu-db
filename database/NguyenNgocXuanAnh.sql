@@ -58,5 +58,4 @@ END;
 
 SELECT * FROM dbo.fn_quannguc_select (13000000) ORDER BY Luong ASC;
 
-
-
+--Cau 4: Trigger - Khi thêm vào bảng CONGVIEC: SoLuongToiDa phải >=4 và <=10
