@@ -146,7 +146,7 @@ CREATE TABLE CAITAO (
     KetQua NVARCHAR(20),
     MaQuanNgucPhuTrach VARCHAR(10),
     GhiChu NVARCHAR(20),
-    DanhGia BIT,
+    DanhGia NVARCHAR(20),
 
     CONSTRAINT PK_CAITAO
         PRIMARY KEY (MaTuNhan, MaCongViec, NgayThucHien),
@@ -214,7 +214,7 @@ CREATE TABLE VIPHAMKYLUAT (
     NgayViPham DATE,
     NoiDung NVARCHAR(100),
     HinhThucXuLy NVARCHAR(50),
-    GhiChu NVARCHAR(20),
+    GhiChu NVARCHAR(40),
 
     CONSTRAINT FK_VIPHAMKYLUAT_TUNHAN
         FOREIGN KEY (MaTuNhan)
