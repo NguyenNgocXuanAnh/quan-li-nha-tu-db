@@ -1,13 +1,11 @@
 --3.d.	Truy vấn lớn nhất, nhỏ nhất: 4 câu (4 đ) (Vũ)
 --1. Tù nhân lớn tuổi nhất
-
-
-
-
-
-
-
-
+SELECT *
+FROM TUNHAN
+WHERE NgaySinh = (
+    SELECT MIN(NgaySinh)
+    FROM TUNHAN
+);
 
 
 
