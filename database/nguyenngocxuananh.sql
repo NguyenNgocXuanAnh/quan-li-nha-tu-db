@@ -1,10 +1,21 @@
-﻿-- Cau 3e:
+﻿drop database QLNT;
+-- Cau 3e:
 --1/ Liệt kê danh sách các quản ngục (Mã, Tên, Chức vụ) không thuộc các khu vực quản lý là 'KVA' và 'KVB'.
 SELECT MaQuanNguc, TenQuanNguc, ChucVu 
 FROM QUANNGUC 
 WHERE MaKV NOT IN ('KVA', 'KVB');
 
---2/ 
+--2/ Liệt kê danh sách những phòng giam trống không chứa tù nhân 
+SELECT PG.MaPhong, PG.MaKV, PG.SucChua, PG.TrangThai, PG.LoaiPhong, PG.SoLuongHienTai, PG.GhiChu FROM PHONGGIAM PG
+LEFT JOIN TUNHAN TN ON TN.MaPhong = PG.MaPhong
+WHERE TN.MaTuNhan IS NULL;
+
+--3/ Liệt kê những quản ngục không quản lý phong giam nào 
+SELECT QN.MaQuanNguc, QN.TenQuanNguc, QN.ChucVu
+FROM PHONGGIAM PG
+RIGHT JOIN QUANNGUC QN ON PG.MaQuanNguc = QN.MaQuanNguc
+WHERE PG.MaPhong IS NULL;
+
 --Cau 4: Stored Procedure - Tìm danh sách tù nhân theo giới tính 
 CREATE PROC sp_gioitinh_select @GioiTinh nvarchar(5)
 AS BEGIN 
