@@ -64,17 +64,17 @@ HAVING COUNT(DISTINCT MaCongViec) = (
 SELECT QN.MaQuanNguc
 FROM QUANNGUC QN
 WHERE NOT EXISTS (
-	SELECT *
-	FROM (
-		SELECT DISTINCT MaTuNhan
-		FROM CAITAO
-	) T
+	SELECT DISTINCT CT1.MaTuNhan
+	FROM CAITAO CT1
 	WHERE NOT EXISTS (
 		SELECT *
-		FROM CAITAO CT
-		WHERE CT.MaQuanNgucPhuTrach = QN.MaQuanNguc AND CT.MaTuNhan = T.MaTuNhan
+		FROM CAITAO CT2
+		WHERE CT2.MaQuanNgucPhuTrach = QN.MaQuanNguc
+		  AND CT2.MaTuNhan = CT1.MaTuNhan
 	)
 );
+
+
 --Thủ tục (1 câu)
 --Xây dựng thủ tục thực hiện chuyển phòng cho tù nhân có chức năng: cập nhật phòng mới, lưu lịch sử chuyển phòng
 --và thay đổi số lượng tù nhân trong các phòng giam
@@ -215,6 +215,7 @@ SELECT *
 FROM TUNHAN
 WHERE MaTuNhan = 'TN001';
 ROLLBACK;
+
 --Tạo 1 người dùng và cấp quyền
 --Tạo quyền với quản ngục bình thường (không phải Trưởng và phó khu)
 CREATE LOGIN qn_thuong WITH PASSWORD = 'qn123456';	
