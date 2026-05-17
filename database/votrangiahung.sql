@@ -52,7 +52,30 @@ GROUP BY TN.MaTuNhan, TN.HoTen
 HAVING COUNT(*) >= 2 AND MAX(CT.NgayThucHien) > '2026-01-01';
 
 --Truy vấn sử dụng phép chia (4 câu)
+--Tìm tù nhân có tham gia tất cả các công việc cải tạo.
+SELECT MaTuNhan
+FROM CAITAO
+GROUP BY MaTuNhan
+HAVING COUNT(DISTINCT MaCongViec) = (
+	SELECT COUNT(*)
+	FROM CONGVIEC
+);
 
+--Tìm quản ngục phụ trách ít nhất một ngày cải tạo của tất cả các tù nhân từng cải tạo. 
+SELECT QN.MaQuanNguc
+FROM QUANNGUC QN
+WHERE NOT EXISTS (
+	SELECT *
+	FROM (
+		SELECT DISTINCT MaTuNhan
+		FROM CAITAO
+	) T
+	WHERE NOT EXISTS (
+		SELECT *
+		FROM CAITAO CT
+		WHERE CT.MaQuanNgucPhuTrach = QN.MaQuanNguc AND CT.MaTuNhan = T.MaTuNhan
+	)
+);
 --Thủ tục (1 câu)
 --Xây dựng thủ tục thực hiện chuyển phòng cho tù nhân có chức năng: cập nhật phòng mới, lưu lịch sử chuyển phòng
 --và thay đổi số lượng tù nhân trong các phòng giam
@@ -105,7 +128,7 @@ RETURN (
 SELECT *
 FROM dbo.fn_PHONGGIAM_TheoKV('KVB');
 
---2. xây dựng hàm trả về bảng bao gồm thông tin của tội danh và số lượng tù nhân mang tội danh đó
+--2. Xây dựng hàm trả về bảng bao gồm thông tin của tội danh và số lượng tù nhân mang tội danh đó
 CREATE FUNCTION fn_TOIDANH_ThongKe()
 RETURNS @KetQua
 TABLE (MaToiDanh VARCHAR(10), TenToiDanh NVARCHAR(40), SoLuongTuNhan INT)
