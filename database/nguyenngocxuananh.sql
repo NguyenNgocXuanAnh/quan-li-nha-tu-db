@@ -1,5 +1,8 @@
 ﻿-- Cau 3e:
---1/ Liệt kê các tù nhân có tuổi thuộc tập hợp {45, 50, 55}
+--1/ Liệt kê các tù nhân có tuổi thuộc tập hợp {29, 36, 44}
+SELECT * FROM TUNHAN 
+WHERE datediff(year, NgaySinh, getdate()) in (29, 36, 44)
+ORDER BY NgaySinh DESC;
 
 
 --Cau 4: Stored Procedure - Tìm danh sách tù nhân theo giới tính 
