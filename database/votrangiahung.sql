@@ -206,3 +206,11 @@ FROM TUNHAN
 WHERE MaTuNhan = 'TN001';
 ROLLBACK;
 --Tạo 1 người dùng và cấp quyền
+--Tạo quyền với quản ngục bình thường (không phải Trưởng và phó khu)
+CREATE LOGIN qn_thuong WITH PASSWORD = 'qn123456';	
+USE QLNT;
+CREATE USER qn_thuong_user FOR LOGIN qn_thuong;
+GRANT SELECT, INSERT, UPDATE ON TUNHAN TO qn_thuong_user;
+GRANT SELECT, INSERT, UPDATE ON THANNHAN TO qn_thuong_user;
+GRANT SELECT, INSERT, UPDATE ON PHONGGIAM TO qn_thuong_user;
+GRANT SELECT ON QUANNGUC TO qn_thuong_user;
