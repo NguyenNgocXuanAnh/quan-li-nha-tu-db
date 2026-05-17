@@ -166,3 +166,9 @@ VALUES
 SELECT * FROM CONGVIEC;
 
 --Câu 5: Tạo 1 người dùng và cấp quyền
+CREATE LOGIN thannhan_qlnt WITH PASSWORD = 'Thannhan@123';
+USE QLNT;
+CREATE USER thannhan_user FOR LOGIN thannhan_qlnt;
+GRANT SELECT ON LICHTHAMNUOI TO thannhan_user;
+GRANT SELECT ON THANNHAN TO thannhan_user;
+
