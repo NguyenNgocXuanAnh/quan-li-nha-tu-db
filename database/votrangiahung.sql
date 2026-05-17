@@ -52,7 +52,7 @@ GROUP BY TN.MaTuNhan, TN.HoTen
 HAVING COUNT(*) >= 2 AND MAX(CT.NgayThucHien) > '2026-01-01';
 
 --Truy vấn sử dụng phép chia (4 câu)
---Tìm tù nhân có tham gia tất cả các công việc cải tạo.
+--1. Tìm tù nhân có tham gia tất cả các công việc cải tạo.
 SELECT MaTuNhan
 FROM CAITAO
 GROUP BY MaTuNhan
@@ -61,7 +61,7 @@ HAVING COUNT(DISTINCT MaCongViec) = (
 	FROM CONGVIEC
 );
 
---Tìm quản ngục phụ trách ít nhất một ngày cải tạo của tất cả các tù nhân từng cải tạo. 
+--2. Tìm quản ngục phụ trách ít nhất một ngày cải tạo của tất cả các tù nhân từng cải tạo. 
 SELECT QN.MaQuanNguc
 FROM QUANNGUC QN
 WHERE NOT EXISTS (
@@ -146,4 +146,34 @@ END;
 SELECT *
 FROM dbo.fn_TOIDANH_ThongKe();
 --Trigger (2 câu)
+--1. Tạo trigger sao cho: Khi thêm lịch thăm nuôi mới vào bảng LICHTHAMNUOI phải đảm bảo cách lần hẹn trước >= 100 ngày
+IF EXISTS (SELECT NAME FROM SYSOBJECTS
+WHERE NAME = 'trg_KiemTraLichThamNuoi' AND TYPE = 'tr')
+DROP TRIGGER trg_KiemTraLichThamNuoi
+GO
+CREATE TRIGGER trg_KiemTraLichThamNuoi
+ON LICHTHAMNUOI
+FOR INSERT
+AS
+BEGIN
+	IF EXISTS (
+		SELECT 1 
+		FROM inserted i
+		WHERE EXISTS (
+			SELECT TOP 1 *
+			FROM LICHTHAMNUOI L
+			WHERE L.MaTuNhan = i.MaTuNhan
+				AND L.NgayHen < i.NgayHen
+				AND DATEDIFF(DAY, L.NgayHen, i.NgayHen) < 100
+			ORDER BY L.NgayHen DESC
+		)
+	)
+	BEGIN
+		ROLLBACK
+		RAISERROR(N'Lịch hẹn phải cách lần trước tối thiểu 100 ngày!',16,1)
+	END
+END;
+
+INSERT INTO LICHTHAMNUOI([MaLich], [MaTuNhan], [MaThanNhan], [NgayHen], [TrangThai], [GhiChu])
+VALUES ('LT021', 'TN018', 'TNH031', '2026-12-01', N'Chưa duyệt', NULL);
 --Tạo 1 người dùng và cấp quyền
