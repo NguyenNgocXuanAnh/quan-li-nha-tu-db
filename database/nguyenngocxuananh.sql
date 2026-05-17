@@ -1,4 +1,8 @@
-﻿--Cau 4: Stored Procedure - Tìm danh sách tù nhân theo giới tính 
+﻿-- Cau 3e:
+--1/ Liệt kê các tù nhân có tuổi thuộc tập hợp {45, 50, 55}
+
+
+--Cau 4: Stored Procedure - Tìm danh sách tù nhân theo giới tính 
 CREATE PROC sp_gioitinh_select @GioiTinh nvarchar(5)
 AS BEGIN 
 	SELECT MaTuNhan, SoCCCD, HoTen, GioiTinh
@@ -84,3 +88,5 @@ VALUES
 ('CV009', N'Giặc và cấp phát đồ dùng', 8,N'Giặc và sấy đồ, sau khi xong cấp phát đến tủ đồ các phòng giam',N'Thấp', 'QN05', N'Đang hoạt động');
 
 SELECT * FROM CONGVIEC;
+
+
