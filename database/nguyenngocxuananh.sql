@@ -1,8 +1,8 @@
 ﻿-- Cau 3e:
---1/ Liệt kê các quản ngục có tuổi không thuộc tập hợp {36, 40, 43}
-SELECT * FROM QUANNGUC 
-WHERE datediff(year, NgaySinh, getdate()) not in (36, 40, 43)
-ORDER BY NgaySinh DESC;
+--1/ Liệt kê danh sách các quản ngục (Mã, Tên, Chức vụ) không thuộc các khu vực quản lý là 'KVA' và 'KVB'.
+SELECT MaQuanNguc, TenQuanNguc, ChucVu 
+FROM QUANNGUC 
+WHERE MaKV NOT IN ('KVA', 'KVB');
 
 --2/ 
 --Cau 4: Stored Procedure - Tìm danh sách tù nhân theo giới tính 
