@@ -104,53 +104,17 @@ HAVING COUNT(*) = (
 );
 
 --Thủ tục (1 câu)
---Xây dựng thủ tục thực hiện chuyển phòng cho tù nhân có chức năng: cập nhật phòng mới, lưu lịch sử chuyển phòng
---và thay đổi số lượng tù nhân trong các phòng giam
-CREATE PROC sp_ChuyenPhongTuNhan
-	@MaTuNhan VARCHAR(10),
-	@MaPhongMoi VARCHAR(10),
-	@LiDo NVARCHAR(100)
-AS
-BEGIN
-	DECLARE @MaPhongCu VARCHAR(10)
-	DECLARE @MaLichSu VARCHAR(10)
-	--Lấy mã phòng hiện tại
-	SELECT @MaPhongCu = MaPhong
-	FROM TUNHAN
-	WHERE MaTuNhan = @MaTuNhan
-	--Tạo mã lịch sử chuyển phòng mới
-	SELECT @MaLichSu = 'LS' + RIGHT('000' + CAST(COUNT(*) + 1 AS VARCHAR), 3)
-	FROM LICHSUCHUYENPHONG
-	--Cập nhật phòng mới
-	UPDATE TUNHAN
-	SET MaPhong = @MaPhongMoi
-	WHERE MaTuNhan = @MaTuNhan
-	--Thêm lịch sử chuyển phòng
-	INSERT INTO LICHSUCHUYENPHONG ([MaLichSu], [MaTuNhan], [MaPhongCu], [MaPhongMoi], [NgayChuyen], [LiDo])
-	VALUES
-	(@MaLichSu, @MaTuNhan, @MaPhongCu, @MaPhongMoi, GETDATE(), @LiDo)
-	--Giảm số người phòng cũ
-	UPDATE PHONGGIAM
-	SET SoLuongHienTai = SoLuongHienTai - 1
-	WHERE MaPhong = @MaPhongCu
-	--Tăng số người phòng mới
-	UPDATE PHONGGIAM
-	SET SoLuongHienTai = SoLuongHienTai + 1
-	WHERE MaPhong = @MaPhongMoi
-END;
-
-EXEC sp_ChuyenPhongTuNhan 'TN001', 'PB202', N'Chuyển sang khu mới';
-
---Xây dựng thủ tục thực hiện: hiển thị thông tin thân nhân dựa trên mã tù nhân truyền vào
-CREATE PROC sp_THANNHAN_TuNhan @MaTN VARCHAR(10)
+--Xây dựng thủ tục thực hiện: hiển thị thông tin tài khoản đang tạm khoá
+DROP PROC sp_TaiKhoanTamDung
+CREATE PROC sp_TaiKhoanTamDung
 AS
 BEGIN
 	SELECT *
-	FROM THANNHAN 
-	WHERE MaTuNhan = @MaTN
+	FROM TAIKHOAN
+	WHERE TrangThai = N'Tạm khóa'
 END;
 
-EXEC sp_THANNHAN_TuNhan 'TN010';
+EXEC sp_TaiKhoanTamDung;
 
 --Hàm (2 câu)
 --1. Xây dựng hàm trả về danh sách phòng giam thuộc một khu vực được truyền vào
