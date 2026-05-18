@@ -33,6 +33,7 @@ CREATE TABLE PHONGGIAM (
     SucChua INT,
     TrangThai NVARCHAR(40),
     LoaiPhong NVARCHAR(5),
+	SoLuongHienTai INT,
     GhiChu NVARCHAR(20),
 
     CONSTRAINT FK_PHONGGIAM_KHUVUC
