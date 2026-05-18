@@ -90,6 +90,7 @@ AS BEGIN
 	WHERE GioiTinh = @GioiTinh 
 END;
 sp_gioitinh_select;
+sp_gioitinh_select Nam;
 
 --Câu 4: Stored Procedure - Tìm thông tin tù nhân ở tù sớm nhất 
 CREATE PROC sp_tunhan_select 
