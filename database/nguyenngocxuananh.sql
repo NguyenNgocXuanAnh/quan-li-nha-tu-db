@@ -83,15 +83,13 @@ WHERE TN.MaTuNhan NOT IN (
 );
 
 --Câu 4: Stored Procedure - Tìm danh sách tù nhân theo giới tính 
-CREATE PROC sp_gioitinh_select @GioiTinh nvarchar(5)
+CREATE PROC sp_gioitinh_select @GioiTinh nvarchar(5) = N'Nữ'
 AS BEGIN 
 	SELECT MaTuNhan, SoCCCD, HoTen, GioiTinh
 	FROM TUNHAN
 	WHERE GioiTinh = @GioiTinh 
 END;
-
-sp_gioitinh_select Nữ;
-sp_gioitinh_select Nam;
+sp_gioitinh_select;
 
 --Câu 4: Stored Procedure - Tìm thông tin tù nhân ở tù sớm nhất 
 CREATE PROC sp_tunhan_select 
