@@ -61,14 +61,17 @@ WHERE SoLanTham = (
 
 --3.f.	Truy vấn Hợp/Giao/Trừ: 3 câu (3đ) (Vũ)
   
---1. Gộp danh sách quản ngục và tù nhân thành một danh sách chung.
-SELECT QN.TenQuanNguc AS Ten, QN.DiaChi, N'Quản ngục' AS Loai
-FROM QUANNGUC QN
+--1. Liệt kê các phòng giam có trạng thái 'Đang sửa chữa' và 'Trống'
+SELECT MaPhong, TrangThai
+FROM PHONGGIAM
+WHERE TrangThai = N'Trống'
 
 UNION
 
-SELECT TN.HoTen, TN.DiaChi, N'Tù nhân' AS Loai
-FROM TUNHAN TN
+SELECT MaPhong, TrangThai
+FROM PHONGGIAM
+WHERE TrangThai = N'Đang sửa chữa'
+
 -- 2. Tìm những tù nhân vừa bị vi phạm kỷ luật, vừa có kết quả cải tạo tốt.
 SELECT TN.MaTuNhan, TN.HoTen
 FROM TUNHAN TN
@@ -81,17 +84,17 @@ FROM TUNHAN TN
 JOIN CAITAO CT ON TN.MaTuNhan = CT.MaTuNhan
 WHERE CT.DanhGia = N'Tốt'
 
---3. Cho biết các phòng giam chưa có tù nhân nào đang ở
-SELECT PG.MaPhong, QN.TenQuanNguc, PG.SucChua
-FROM PHONGGIAM PG
-JOIN QUANNGUC QN ON PG.MaQuanNguc = QN.MaQuanNguc
+--3. Liệt kê các quản ngục thuộc khu vực A nhưng không trực tiếp quản lý phòng giam khu A
+SELECT MaQuanNguc, TenQuanNguc
+FROM QUANNGUC
+WHERE MaKV = 'KVA'
 
 EXCEPT
 
-SELECT PG.MaPhong, QN.TenQuanNguc, PG.SucChua
-FROM PHONGGIAM PG
-JOIN QUANNGUC QN ON PG.MaQuanNguc = QN.MaQuanNguc
-JOIN TUNHAN TN ON PG.MaPhong = TN.MaPhong;
+SELECT DISTINCT QN.MaQuanNguc, QN.TenQuanNguc
+FROM QUANNGUC QN
+JOIN PHONGGIAM PG ON QN.MaQuanNguc = PG.MaQuanNguc
+WHERE PG.MaKV = 'KVA'
 
 
 
