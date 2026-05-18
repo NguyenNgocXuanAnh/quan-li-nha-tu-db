@@ -10,30 +10,54 @@ SELECT TOP 1 *
 FROM TUNHAN
 ORDER BY NgaySinh ASC;
 
---2. Tìm quản ngục có lương cao nhất 
+--2. Tìm công việc có số lượng tối đa nhỏ nhất
 SELECT *
-FROM QUANNGUC
-WHERE Luong = (
-    SELECT MAX(Luong)
-    FROM QUANNGUC
-);
-
---3. Cho biết công việc có số lượng tối đa nhỏ nhất và quản ngục phụ trách
-SELECT TOP 1 CV.MaCongViec, CV.TenCongViec, CV.SoLuongToiDa, QN.TenQuanNguc
 FROM CONGVIEC CV
-JOIN QUANNGUC QN ON CV.MaQuanNguc = QN.MaQuanNguc
-ORDER BY CV.SoLuongToiDa ASC;
-
-
---4. Tìm quản ngục có mức lương cao nhất đang phụ trách cải tạo tù nhân
-SELECT QN.MaQuanNguc, QN.TenQuanNguc, QN.Luong, TN.HoTen
-FROM QUANNGUC QN
-JOIN CAITAO CT ON QN.MaQuanNguc = CT.MaQuanNgucPhuTrach
-JOIN TUNHAN TN ON CT.MaTuNhan = TN.MaTuNhan
-WHERE QN.Luong = (
-    SELECT MAX(Luong)
-    FROM QUANNGUC
+WHERE CV.SoLuongToiDa <= ALL (
+    SELECT SoLuongToiDa
+    FROM CONGVIEC
 );
+--3. Tìm mã quản ngục có số lần duyệt thăm nuôi nhiều nhất trong năm 2025
+SELECT TOP 1 MaQuanNgucDuyet, COUNT(*) AS SoLanDuyet
+FROM THAMNUOI
+WHERE YEAR(NgayTham) = 2025
+GROUP BY MaQuanNgucDuyet
+ORDER BY COUNT(*) DESC
+
+--4. Tìm phòng giam có số lượng tù nhân đang thi hành án nhiều nhất (dùng MAX)
+SELECT PG.MaPhong, QN.TenQuanNguc, COUNT(TN.MaTuNhan) AS SoTuNhan
+FROM PHONGGIAM PG
+JOIN QUANNGUC QN ON PG.MaQuanNguc = QN.MaQuanNguc
+JOIN TUNHAN TN ON PG.MaPhong = TN.MaPhong
+WHERE TN.TrangThai = N'Đang thi hành án'
+GROUP BY PG.MaPhong, QN.TenQuanNguc
+HAVING COUNT(TN.MaTuNhan) = (
+    SELECT MAX(SoTuNhan)
+    FROM (
+        SELECT COUNT(MaTuNhan) AS SoTuNhan
+        FROM TUNHAN
+        WHERE TrangThai = N'Đang thi hành án'
+        GROUP BY MaPhong
+    ) AS Dem
+)
+
+-- 5. Tìm thân nhân đi thăm nuôi nhiều nhất
+SELECT *
+FROM (
+    SELECT TN.MaThanNhan, TN.HoTenThanNhan, COUNT(TM.NgayTham) AS SoLanTham
+    FROM THANNHAN TN
+    JOIN THAMNUOI TM ON TN.MaThanNhan = TM.MaThanNhan
+    GROUP BY TN.MaThanNhan, TN.HoTenThanNhan
+) AS DemThanNhan
+WHERE SoLanTham = (
+    SELECT MAX(SoLanTham)
+    FROM (
+        SELECT COUNT(*) AS SoLanTham
+        FROM THAMNUOI
+        GROUP BY MaThanNhan
+    ) AS Dem
+);
+
 
 --3.f.	Truy vấn Hợp/Giao/Trừ: 3 câu (3đ) (Vũ)
   
