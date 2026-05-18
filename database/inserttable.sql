@@ -9,24 +9,24 @@ VALUES
 
 INSERT INTO [QUANNGUC] ([MaQuanNguc], [TenQuanNguc], [NgaySinh], [GioiTinh], [DiaChi], [SoDienThoai], [Email], [MaKV], [NgayNhanChuc], [Luong], [ChucVu], [TrangThai])
 VALUES
-('QN01',N'Nguyễn Thị Mai','1985-03-12',N'Nữ',N'Phường Lộc Thọ, TP. Nha Trang, Khánh Hòa','0982746153','mai.nguyen@prison.vn','KVA','2016-04-18',12500000,N'Trưởng khu A',N'Đang làm'),
+('QN01',N'Nguyễn Thị Mai','1985-03-12',N'Nữ',N'Phường Lộc Thọ, TP. Nha Trang, Khánh Hòa','0982746153','mai.nguyen@prison.vn','KVA','2016-04-18',13500000,N'Trưởng khu A',N'Đang làm'),
 ('QN02',N'Trần Thị Hạnh','1988-07-21',N'Nữ',N'12 Lê Lợi, Quận 1, TP. Hồ Chí Minh','0915637284','hanh.tran@prison.vn','KVA','2017-11-09',10500000,N'Phó khu A',N'Đang làm'),
-('QN03',N'Lê Thị Thu','1986-11-05',N'Nữ',N'Phường Vĩnh Hòa, TP. Nha Trang, Khánh Hòa','0374829165','thu.le@prison.vn','KVB','2018-06-25',11200000,N'Trưởng khu B',N'Đang làm'),
+('QN03',N'Lê Thị Thu','1986-11-05',N'Nữ',N'Phường Vĩnh Hòa, TP. Nha Trang, Khánh Hòa','0374829165','thu.le@prison.vn','KVB','2018-06-25',12200000,N'Trưởng khu B',N'Đang làm'),
 ('QN04',N'Phạm Thị Ngọc','1989-02-18',N'Nữ',N'88 Nguyễn Huệ, TP. Biên Hòa, Đồng Nai','0856193742','ngoc.pham@prison.vn','KVB','2019-02-14',10800000,N'Phó khu B',N'Đang làm'),
-('QN05',N'Nguyễn Văn Hùng','1982-09-10',N'Nam',N'Phường Vĩnh Hải, TP. Nha Trang, Khánh Hòa','0327481596','hung.nguyen@prison.vn','KVC','2015-08-30',12500000,N'Quản ngục',N'Đang làm'),
-('QN06',N'Trần Văn Đức','1984-12-22',N'Nam',N'45 Lê Văn Sỹ, Quận 3, TP. Hồ Chí Minh','0792615348','duc.tran@prison.vn','KVC','2020-03-07',11700000,N'Phó khu C',N'Đang làm'),
-('QN07',N'Lê Văn Bình','1980-04-03',N'Nam',N'120 Trần Hưng Đạo, TP. Thuận An, Bình Dương','0948572613','binh.le@prison.vn','KVC','2014-12-19',13200000,N'Trưởng khu C',N'Đang làm'),
-('QN08',N'Phạm Văn Nam','1983-06-14',N'Nam',N'Phường Phước Hải, TP. Nha Trang, Khánh Hòa','0386152749','nam.pham@prison.vn','KVD','2021-05-11',9500000,N'Quản ngục',N'Đang làm'),
+('QN05',N'Nguyễn Văn Hùng','1982-09-10',N'Nam',N'Phường Vĩnh Hải, TP. Nha Trang, Khánh Hòa','0327481596','hung.nguyen@prison.vn','KVC','2015-08-30',13000000,N'Quản ngục',N'Đang làm'),
+('QN06',N'Trần Văn Đức','1984-12-22',N'Nam',N'45 Lê Văn Sỹ, Quận 3, TP. Hồ Chí Minh','0792615348','duc.tran@prison.vn','KVC','2020-03-07',12200000,N'Phó khu C',N'Đang làm'),
+('QN07',N'Lê Văn Bình','1980-04-03',N'Nam',N'120 Trần Hưng Đạo, TP. Thuận An, Bình Dương','0948572613','binh.le@prison.vn','KVC','2014-12-19',14700000,N'Trưởng khu C',N'Đang làm'),
+('QN08',N'Phạm Văn Nam','1983-06-14',N'Nam',N'Phường Phước Hải, TP. Nha Trang, Khánh Hòa','0386152749','nam.pham@prison.vn','KVD','2021-05-11',12500000,N'Quản ngục',N'Đang làm'),
 ('QN09',N'Hoàng Thị Lan','1990-01-20',N'Nữ',N'25 Nguyễn Trãi, TP. Dĩ An, Bình Dương','0863725194','lan.hoang@prison.vn','KVA','2022-09-23',9200000,N'Quản ngục',N'Đang làm'),
 ('QN10',N'Võ Thị Hồng','1991-11-11',N'Nữ',N'56 Lý Thường Kiệt, TP. Vũng Tàu, Bà Rịa - Vũng Tàu','0974518263','hong.vo@prison.vn','KVB','2023-01-15',8900000,N'Quản ngục',N'Đang làm'),
-('QN11',N'Nguyễn Văn Long','1985-06-15',N'Nam',N'78 Quốc lộ 22, Tây Ninh','0359182746','long.nguyen@prison.vn','KVD','2016-07-28',10900000,N'Quản ngục',N'Đang làm'),
+('QN11',N'Nguyễn Văn Long','1985-06-15',N'Nam',N'78 Quốc lộ 22, Tây Ninh','0359182746','long.nguyen@prison.vn','KVD','2016-07-28',15900000,N'Quản ngục',N'Đang làm'),
 ('QN12',N'Trần Văn Khánh','1986-09-09',N'Nam',N'33 Trần Phú, TP. Thủ Đức, TP. Hồ Chí Minh','0836471529','khanh.tran@prison.vn','KVD','2018-10-04',11900000,N'Phó khu D',N'Đang làm'),
 ('QN13',N'Lê Thị Bích','1992-02-02',N'Nữ',N'316 Trần Bình Trọng, TP. Thủ Đức, TP. Hồ Chí Minh','0927153846','bich.le@prison.vn','KVB','2024-03-16',8700000,N'Quản ngục',N'Đang làm'),
 ('QN14',N'Phạm Thị Thanh','1990-08-18',N'Nữ',N'14 Nguyễn Văn Linh, TP. Tân An, Long An','0392847165','thanh.pham@prison.vn','KVA','2021-06-02',9000000,N'Quản ngục',N'Đang làm'),
-('QN15',N'Trần Văn Sơn','1983-12-25',N'Nam',N'290 Lê Lợi, Q. Gò Vấp, TP. Hồ Chí Minh','0815639472','son.tran@prison.vn','KVD','2017-11-21',12800000,N'Trưởng khu D',N'Đang làm'),
-('QN16',N'Nguyễn Văn Hoàng','1985-03-15',N'Nam',N'Phường Linh Trung, TP. Thủ Đức, TP. Hồ Chí Minh','0918245736','hoang.nguyen@prison.vn','KVC','2019-08-13',10600000,N'Quản ngục',N'Tạm nghỉ'),
+('QN15',N'Trần Văn Sơn','1983-12-25',N'Nam',N'290 Lê Lợi, Q. Gò Vấp, TP. Hồ Chí Minh','0815639472','son.tran@prison.vn','KVD','2017-11-21',13800000,N'Trưởng khu D',N'Đang làm'),
+('QN16',N'Nguyễn Văn Hoàng','1985-03-15',N'Nam',N'Phường Linh Trung, TP. Thủ Đức, TP. Hồ Chí Minh','0918245736','hoang.nguyen@prison.vn','KVC','2019-08-13',14100000,N'Quản ngục',N'Tạm nghỉ'),
 ('QN17',N'Trần Quốc Minh','1987-11-22',N'Nam',N'45 Nguyễn Văn Cừ, Quận 5, TP. Hồ Chí Minh','0983157246','minh.tran@prison.vn','KVD','2022-04-08',13900000,N'Quản ngục',N'Đang làm'),
-('QN18',N'Lê Thành Đạt','1990-07-09',N'Nam',N'Phường Hiệp Bình Chánh, TP. Thủ Đức, TP. Hồ Chí Minh','0375821469','dat.le@prison.vn','KVC','2020-01-26',10300000,N'Quản ngục',N'Đang làm'),
+('QN18',N'Lê Thành Đạt','1990-07-09',N'Nam',N'Phường Hiệp Bình Chánh, TP. Thủ Đức, TP. Hồ Chí Minh','0375821469','dat.le@prison.vn','KVC','2020-01-26',13800000,N'Quản ngục',N'Đang làm'),
 ('QN19',N'Phạm Thị Bảo Ngân','1992-12-28',N'Nữ',N'12 Lê Văn Sỹ, Quận 3, TP. Hồ Chí Minh','0856147293','ngan.pham@prison.vn','KVB','2024-07-17',8700000,N'Quản ngục',N'Đang làm'),
 ('QN20',N'Võ Thị Thu Hà','1988-05-11',N'Nữ',N'Phường 14, Quận Gò Vấp, TP. Hồ Chí Minh','0942736158','ha.vo@prison.vn','KVA','2018-09-05',10100000,N'Quản ngục',N'Đang làm');
 
@@ -44,7 +44,7 @@ VALUES
 ('PB201','KVB','QN04',6,N'Đang sử dụng',N'Nữ',1,N'Còn trống nhiều chỗ'),
 ('PB202','KVB','QN10',6,N'Đang sử dụng',N'Nữ',0,N'Kho chứa dụng cụ'),
 ('PB203','KVB','QN13',6,N'Đang sử dụng',N'Nữ',0,N'Kho chứa dụng cụ'),
-('PC101','KVC','QN05',6,N'Đang sử dụng',N'Nam',2,N'Khu nam tầng 1'),
+('PC101','KVC','QN16',6,N'Đang sử dụng',N'Nam',2,N'Khu nam tầng 1'),
 ('PC102','KVC','QN16',6,N'Đang sử dụng',N'Nam',2,N'Khu nam tầng 1'),
 ('PC103','KVC','QN18',6,N'Đang sử dụng',N'Nam',2,N'Khu nam tầng 1'),
 ('PC201','KVC','QN05',6,N'Đang sử dụng',N'Nam',2,N'Khu nam tầng 2'),
@@ -52,7 +52,7 @@ VALUES
 ('PC203','KVC','QN18',6,N'Trống',N'Nam',0,N'Chưa sử dụng'),
 ('PD101','KVD','QN08',6,N'Trống',N'Nam',0,N'Chưa sử dụng'),
 ('PD102','KVD','QN11',6,N'Đang sử dụng',N'Nam',2,N'Khu nam giám sát'),
-('PD103','KVD','QN17',6,N'Đang sử dụng',N'Nam',2,N'Khu nam giám sát'),
+('PD103','KVD','QN16',6,N'Đang sử dụng',N'Nam',2,N'Khu nam giám sát'),
 ('PD201','KVD','QN08',6,N'Đang sử dụng',N'Nam',1,N'Khu nam giám sát'),
 ('PD202','KVD','QN11',6,N'Đang sửa chữa',N'Nam',0,N'Chưa sử dụng'),
 ('PD203','KVD','QN17',6,N'Đang sửa chữa',N'Nam',0,N'Chưa sử dụng');
@@ -315,7 +315,7 @@ VALUES
 ('TN030','CV007','2025-05-09',N'Hoàn thành','QN03',N'Đúng quy định',N'Khá'),
 ('TN030','CV006','2025-10-10',N'Hoàn thành','QN10',N'Hoàn thành tốt',N'Tốt'),
 ('TN030','CV008','2026-02-28',N'Hoàn thành','QN09',N'Có trách nhiệm',N'Khá');
-DELETE FROM CAITAO;
+
 INSERT INTO [THAMNUOI] ([MaTuNhan], [MaThanNhan], [NgayTham], [GioVao], [GioRa], [NoiDungThamNuoi], [TrangThai], [MaQuanNgucDuyet])
 VALUES
 ('TN001', 'TNH001', '2016-05-18', '07:30', '08:30', N'Thăm hỏi sức khỏe', NULL, 'QN01'),
@@ -375,7 +375,6 @@ VALUES
 ('LS008','TN023','PC201','PD201','2025-08-11',N'Điều chỉnh theo nội quy quản lý'),
 ('LS009','TN026','PA201','PB102','2025-11-19',N'Chuyển theo yêu cầu quản giáo'),
 ('LS010','TN029','PD202','PC202','2026-02-08',N'Sắp xếp lại phòng giam');
-
 
 INSERT INTO [VIPHAMKYLUAT] ([MaViPham], [MaTuNhan], [NgayViPham], [NoiDung], [HinhThucXuLy], [GhiChu])
 VALUES
