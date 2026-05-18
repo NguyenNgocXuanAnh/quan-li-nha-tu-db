@@ -71,11 +71,13 @@ LEFT JOIN THANNHAN TNH ON  TNH.MaTuNhan = TN.MaTuNhan
 WHERE TN.MaPhong IS NOT NULL AND TNH.MaTuNhan IS NULL;
 
 --5/ Tìm danh sách những tù nhân có đánh giá tốt 
-SELECT TN.MaTuNhan, TN.HoTen
+SELECT TN.MaTuNhan, TN.HoTen, CT.DanhGia
+FROM TUNHAN TN 
+JOIN CAITAO CT ON CT.MaTuNhan =  TN.MaTuNhan
 WHERE TN.MaTuNhan NOT IN (
 	SELECT CT.MaTuNhan
     FROM CAITAO CT 
-    WHERE CT.DanhGia = N'Kém' AND CT.DanhGia = N'Trung bình' AND CT.DanhGia = N'Khá'
+    WHERE CT.DanhGia = N'Kém' OR CT.DanhGia = N'Trung bình' OR CT.DanhGia = N'Khá'
 );
 
 --Câu 4: Stored Procedure - Tìm danh sách tù nhân theo giới tính 
