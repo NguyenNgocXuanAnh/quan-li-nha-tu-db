@@ -398,31 +398,30 @@ VALUES
 ('VP018', 'TN025', '2025-12-04', N'Tàng trữ điện thoại trái phép', N'Biệt giam 7 ngày', N'Thu giữ tang vật'),
 ('VP019', 'TN027', '2026-01-18', N'Cãi nhau với phạm nhân khác', N'Cảnh cáo', N'Không gây thương tích'),
 ('VP020', 'TN029', '2026-03-27', N'Hút thuốc trong phòng giam', N'Lao động công ích', N'Vi phạm lần đầu');
-
+DELETE FROM TAIKHOAN;
 INSERT INTO [TAIKHOAN] ([MaTaiKhoan], [TenDangNhap], [MatKhau], [VaiTro], [MaQuanNguc], [TrangThai])
 VALUES
-('TK001','admin','Admin_2026','Admin',NULL,'Hoạt động'),
-('TK002','qn01','Mai@1985','Quản ngục','QN01','Hoạt động'),
-('TK003','qn02','Hanh#A88','Phó khu','QN02','Hoạt động'),
-('TK004','qn03','Thu_B2024','Trưởng khu','QN03','Hoạt động'),
-('TK005','qn04','Ngoc!1989','Phó khu','QN04','Hoạt động'),
-('TK006','qn05','Hungiuem123','Quản ngục','QN05','Hoạt động'),
-('TK007','qn06','DucQN06','Phó khu','QN06','Hoạt động'),
-('TK008','qn07','Binh!Secure7','Trưởng khu','QN07','Hoạt động'),
-('TK009','qn08','Nam_2021*','Quản ngục','QN08','Hoạt động'),
-('TK010','qn09','LanLan90@','Quản ngục','QN09','Hoạt động'),
-('TK011','qn10','H0ng#VB91','Quản ngục','QN10','Hoạt động'),
-('TK012','qn11','Long@7711','Quản ngục','QN11','Hoạt động'),
-('TK013','qn12','Khanh#8','Phó khu','QN12','Hoạt động'),
-('TK014','qn13','Bich@2024!','Quản ngục','QN13','Hoạt động'),
-('TK015','qn14','Thanh_LA90','Quản ngục','QN14','Hoạt động'),
-('TK016','qn15','Son#GOVAP','Trưởng khu','QN15','Hoạt động'),
-('TK017','qn16','Hoang@Temp16','Quản ngục','QN16','Tạm khóa'),
-('TK018','qn17','Minh_Q17','Quản ngục','QN17','Hoạt động'),
-('TK019','qn18','Datle@2K20','Quản ngục','QN18','Hoạt động'),
-('TK020','qn19','@Ngannn1','Quản ngục','QN19','Hoạt động'),
-('TK021','qn20','Ha_vo#88','Quản ngục','QN20','Hoạt động');
-
+('TK001','admin','Admin_2026',N'Admin',NULL,N'Hoạt động'),
+('TK002','qn01','Mai@1985',N'Quản ngục','QN01',N'Hoạt động'),
+('TK003','qn02','Hanh#A88',N'Phó khu','QN02',N'Hoạt động'),
+('TK004','qn03','Thu_B2024',N'Trưởng khu','QN03',N'Hoạt động'),
+('TK005','qn04','Ngoc!1989',N'Phó khu','QN04',N'Hoạt động'),
+('TK006','qn05','Hungiuem123',N'Quản ngục','QN05',N'Hoạt động'),
+('TK007','qn06','DucQN06',N'Phó khu','QN06',N'Hoạt động'),
+('TK008','qn07','Binh!Secure7',N'Trưởng khu','QN07',N'Hoạt động'),
+('TK009','qn08','Nam_2021*',N'Quản ngục','QN08',N'Hoạt động'),
+('TK010','qn09','LanLan90@',N'Quản ngục','QN09',N'Hoạt động'),
+('TK011','qn10','H0ng#VB91',N'Quản ngục','QN10',N'Hoạt động'),
+('TK012','qn11','Long@7711',N'Quản ngục','QN11',N'Hoạt động'),
+('TK013','qn12','Khanh#8',N'Phó khu','QN12',N'Hoạt động'),
+('TK014','qn13','Bich@2024!',N'Quản ngục','QN13',N'Hoạt động'),
+('TK015','qn14','Thanh_LA90',N'Quản ngục','QN14',N'Hoạt động'),
+('TK016','qn15','Son#GOVAP',N'Trưởng khu','QN15',N'Hoạt động'),
+('TK017','qn16','Hoang@Temp16',N'Quản ngục','QN16',N'Tạm khóa'),
+('TK018','qn17','Minh_Q17',N'Quản ngục','QN17',N'Hoạt động'),
+('TK019','qn18','Datle@2K20',N'Quản ngục','QN18',N'Hoạt động'),
+('TK020','qn19','@Ngannn1',N'Quản ngục','QN19',N'Hoạt động'),
+('TK021','qn20','Ha_vo#88',N'Quản ngục','QN20',N'Hoạt động');
 
 INSERT INTO [LICHTHAMNUOI] ([MaLich], [MaTuNhan], [MaThanNhan], [NgayHen], [TrangThai], [GhiChu])
 VALUES
