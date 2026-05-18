@@ -90,6 +90,18 @@ WHERE NOT EXISTS (
       )
 );
 
+--4. Tìm khu vực có tất cả quản ngục có lương cao hơn trung bình cả trại.
+SELECT QUANNGUC.MaKV
+FROM QUANNGUC
+GROUP BY QUANNGUC.MaKV
+HAVING COUNT(*) = (
+	SELECT COUNT(*)
+	FROM QUANNGUC QN2
+	WHERE QN2.MaKV = QUANNGUC.MaKV AND QN2.Luong > (
+		SELECT AVG(LUONG)
+		FROM QUANNGUC
+	)
+);
 
 --Thủ tục (1 câu)
 --Xây dựng thủ tục thực hiện chuyển phòng cho tù nhân có chức năng: cập nhật phòng mới, lưu lịch sử chuyển phòng
