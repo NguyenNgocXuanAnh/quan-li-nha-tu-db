@@ -28,10 +28,12 @@ SELECT QN.MaQuanNguc, QN.TenQuanNguc, QN.ChucVu, QN.Luong
 FROM QUANNGUC QN
 WHERE QN.Luong = (SELECT MIN(Luong) FROM QUANNGUC);
 
---5/ Tính tổng sức chứa tối đa của các phòng giam từng khu vực
-SELECT PG.MaKV, SUM(PG.SucChua) AS TongSucChuaToiDa
-FROM PHONGGIAM PG
-GROUP BY PG.MaKV;
+--5/ Tính tổng công việc của một tù nhân 
+SELECT TN.MaTuNhan, TN.HoTen, SUM(1) AS TongCongViec
+FROM TUNHAN TN
+JOIN CAITAO CT ON TN.MaTuNhan = CT.MaTuNhan
+GROUP BY TN.MaTuNhan, TN.HoTen
+ORDER BY TongCongViec DESC;
 
 --6/ Đếm số lịch thăm nuôi theo trạng thái (Đã duyệt, Chưa duyệt, Không duyệt)
 SELECT TrangThai, COUNT(*) AS SoLuongLich
