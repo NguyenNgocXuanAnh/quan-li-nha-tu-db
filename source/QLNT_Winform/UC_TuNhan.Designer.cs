@@ -175,28 +175,28 @@ namespace QLNT_Winform
             this.label1.Location = new System.Drawing.Point(30, startY);
             this.label1.Name = "label1";
             this.label1.Text = "Mã Tù Nhân:";
-            this.txtMaTuNhan.Location = new System.Drawing.Point(130, startY - 3);
+            this.txtMaTuNhan.Location = new System.Drawing.Point(160, startY - 3);
             this.txtMaTuNhan.Size = new System.Drawing.Size(150, 22);
             
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(30, startY + gapY);
             this.label2.Name = "label2";
             this.label2.Text = "Họ Tên:";
-            this.txtHoTen.Location = new System.Drawing.Point(130, startY + gapY - 3);
+            this.txtHoTen.Location = new System.Drawing.Point(160, startY + gapY - 3);
             this.txtHoTen.Size = new System.Drawing.Size(250, 22);
 
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(30, startY + gapY * 2);
             this.label3.Name = "label3";
             this.label3.Text = "Số CCCD:";
-            this.txtCCCD.Location = new System.Drawing.Point(130, startY + gapY * 2 - 3);
+            this.txtCCCD.Location = new System.Drawing.Point(160, startY + gapY * 2 - 3);
             this.txtCCCD.Size = new System.Drawing.Size(150, 22);
 
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(30, startY + gapY * 3);
             this.label4.Name = "label4";
             this.label4.Text = "Ngày Sinh:";
-            this.dtpNgaySinh.Location = new System.Drawing.Point(130, startY + gapY * 3 - 3);
+            this.dtpNgaySinh.Location = new System.Drawing.Point(160, startY + gapY * 3 - 3);
             this.dtpNgaySinh.Size = new System.Drawing.Size(200, 22);
             this.dtpNgaySinh.Format = System.Windows.Forms.DateTimePickerFormat.Short;
 
@@ -204,7 +204,7 @@ namespace QLNT_Winform
             this.label5.Location = new System.Drawing.Point(30, startY + gapY * 4);
             this.label5.Name = "label5";
             this.label5.Text = "Giới Tính:";
-            this.cbGioiTinh.Location = new System.Drawing.Point(130, startY + gapY * 4 - 3);
+            this.cbGioiTinh.Location = new System.Drawing.Point(160, startY + gapY * 4 - 3);
             this.cbGioiTinh.Size = new System.Drawing.Size(100, 24);
             this.cbGioiTinh.Items.AddRange(new object[] { "Nam", "Nữ" });
 
@@ -212,21 +212,21 @@ namespace QLNT_Winform
             this.label6.Location = new System.Drawing.Point(30, startY + gapY * 5);
             this.label6.Name = "label6";
             this.label6.Text = "Mã Phòng:";
-            this.txtPhong.Location = new System.Drawing.Point(130, startY + gapY * 5 - 3);
+            this.txtPhong.Location = new System.Drawing.Point(160, startY + gapY * 5 - 3);
             this.txtPhong.Size = new System.Drawing.Size(150, 22);
 
             this.label7.AutoSize = true;
             this.label7.Location = new System.Drawing.Point(30, startY + gapY * 6);
             this.label7.Name = "label7";
             this.label7.Text = "Trạng Thái:";
-            this.txtTrangThai.Location = new System.Drawing.Point(130, startY + gapY * 6 - 3);
+            this.txtTrangThai.Location = new System.Drawing.Point(160, startY + gapY * 6 - 3);
             this.txtTrangThai.Size = new System.Drawing.Size(200, 22);
 
             this.label8.AutoSize = true;
             this.label8.Location = new System.Drawing.Point(30, startY + gapY * 7);
             this.label8.Name = "label8";
             this.label8.Text = "Mức Nguy Hiểm:";
-            this.cbMucDo.Location = new System.Drawing.Point(130, startY + gapY * 7 - 3);
+            this.cbMucDo.Location = new System.Drawing.Point(160, startY + gapY * 7 - 3);
             this.cbMucDo.Size = new System.Drawing.Size(150, 24);
             this.cbMucDo.Items.AddRange(new object[] { "Thấp", "Trung bình", "Cao", "Đặc biệt" });
 
