@@ -46,7 +46,7 @@ namespace QLNT_Winform
             this.pnlSidebar.Dock = System.Windows.Forms.DockStyle.Left;
             this.pnlSidebar.Location = new System.Drawing.Point(0, 0);
             this.pnlSidebar.Name = "pnlSidebar";
-            this.pnlSidebar.Size = new System.Drawing.Size(250, 681);
+            this.pnlSidebar.Size = new System.Drawing.Size(260, 681);
             this.pnlSidebar.TabIndex = 0;
             
             // lblTitle
@@ -55,7 +55,7 @@ namespace QLNT_Winform
             this.lblTitle.ForeColor = System.Drawing.Color.White;
             this.lblTitle.Location = new System.Drawing.Point(0, 0);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(250, 70);
+            this.lblTitle.Size = new System.Drawing.Size(260, 70);
             this.lblTitle.TabIndex = 0;
             this.lblTitle.Text = "Hệ Thống QLNT";
             this.lblTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -68,9 +68,9 @@ namespace QLNT_Winform
             this.btnTuNhan.ForeColor = System.Drawing.Color.White;
             this.btnTuNhan.Location = new System.Drawing.Point(0, 70);
             this.btnTuNhan.Name = "btnTuNhan";
-            this.btnTuNhan.Size = new System.Drawing.Size(250, 60);
+            this.btnTuNhan.Size = new System.Drawing.Size(260, 60);
             this.btnTuNhan.TabIndex = 1;
-            this.btnTuNhan.Text = "👨‍⚖️ Quản lý Tù Nhân";
+            this.btnTuNhan.Text = "■ Quản lý Tù Nhân";
             this.btnTuNhan.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnTuNhan.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
             this.btnTuNhan.UseVisualStyleBackColor = true;
@@ -84,9 +84,9 @@ namespace QLNT_Winform
             this.btnCanBo.ForeColor = System.Drawing.Color.White;
             this.btnCanBo.Location = new System.Drawing.Point(0, 130);
             this.btnCanBo.Name = "btnCanBo";
-            this.btnCanBo.Size = new System.Drawing.Size(250, 60);
+            this.btnCanBo.Size = new System.Drawing.Size(260, 60);
             this.btnCanBo.TabIndex = 2;
-            this.btnCanBo.Text = "👮 Cán Bộ & Phòng Giam";
+            this.btnCanBo.Text = "■ Cán Bộ & Phòng Giam";
             this.btnCanBo.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnCanBo.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
             this.btnCanBo.UseVisualStyleBackColor = true;
@@ -100,9 +100,9 @@ namespace QLNT_Winform
             this.btnNghiepVu.ForeColor = System.Drawing.Color.White;
             this.btnNghiepVu.Location = new System.Drawing.Point(0, 190);
             this.btnNghiepVu.Name = "btnNghiepVu";
-            this.btnNghiepVu.Size = new System.Drawing.Size(250, 60);
+            this.btnNghiepVu.Size = new System.Drawing.Size(260, 60);
             this.btnNghiepVu.TabIndex = 3;
-            this.btnNghiepVu.Text = "📅 Nghiệp Vụ & Thăm Nuôi";
+            this.btnNghiepVu.Text = "■ Nghiệp Vụ & Thăm Nuôi";
             this.btnNghiepVu.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnNghiepVu.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
             this.btnNghiepVu.UseVisualStyleBackColor = true;
@@ -116,9 +116,9 @@ namespace QLNT_Winform
             this.btnDanhMuc.ForeColor = System.Drawing.Color.White;
             this.btnDanhMuc.Location = new System.Drawing.Point(0, 250);
             this.btnDanhMuc.Name = "btnDanhMuc";
-            this.btnDanhMuc.Size = new System.Drawing.Size(250, 60);
+            this.btnDanhMuc.Size = new System.Drawing.Size(260, 60);
             this.btnDanhMuc.TabIndex = 4;
-            this.btnDanhMuc.Text = "⚙️ Danh Mục Hệ Thống";
+            this.btnDanhMuc.Text = "■ Danh Mục Hệ Thống";
             this.btnDanhMuc.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnDanhMuc.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
             this.btnDanhMuc.UseVisualStyleBackColor = true;
@@ -132,9 +132,9 @@ namespace QLNT_Winform
             this.btnThongKe.ForeColor = System.Drawing.Color.White;
             this.btnThongKe.Location = new System.Drawing.Point(0, 310);
             this.btnThongKe.Name = "btnThongKe";
-            this.btnThongKe.Size = new System.Drawing.Size(250, 60);
+            this.btnThongKe.Size = new System.Drawing.Size(260, 60);
             this.btnThongKe.TabIndex = 5;
-            this.btnThongKe.Text = "📊 Thống Kê & Báo Cáo";
+            this.btnThongKe.Text = "■ Thống Kê & Báo Cáo";
             this.btnThongKe.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnThongKe.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
             this.btnThongKe.UseVisualStyleBackColor = true;
@@ -142,9 +142,9 @@ namespace QLNT_Winform
             
             // pnlMain
             this.pnlMain.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlMain.Location = new System.Drawing.Point(250, 0);
+            this.pnlMain.Location = new System.Drawing.Point(260, 0);
             this.pnlMain.Name = "pnlMain";
-            this.pnlMain.Size = new System.Drawing.Size(1014, 681);
+            this.pnlMain.Size = new System.Drawing.Size(1004, 681);
             this.pnlMain.TabIndex = 1;
             
             // Form1
