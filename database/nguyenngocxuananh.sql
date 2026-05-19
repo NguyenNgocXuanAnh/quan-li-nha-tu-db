@@ -28,10 +28,12 @@ SELECT QN.MaQuanNguc, QN.TenQuanNguc, QN.ChucVu, QN.Luong
 FROM QUANNGUC QN
 WHERE QN.Luong = (SELECT MIN(Luong) FROM QUANNGUC);
 
---5/ Tính tổng sức chứa tối đa của các phòng giam từng khu vực
-SELECT PG.MaKV, SUM(PG.SucChua) AS TongSucChuaToiDa
-FROM PHONGGIAM PG
-GROUP BY PG.MaKV;
+--5/ Tính tổng công việc của một tù nhân 
+SELECT TN.MaTuNhan, TN.HoTen, SUM(1) AS TongCongViec
+FROM TUNHAN TN
+JOIN CAITAO CT ON TN.MaTuNhan = CT.MaTuNhan
+GROUP BY TN.MaTuNhan, TN.HoTen
+ORDER BY TongCongViec DESC;
 
 --6/ Đếm số lịch thăm nuôi theo trạng thái (Đã duyệt, Chưa duyệt, Không duyệt)
 SELECT TrangThai, COUNT(*) AS SoLuongLich
@@ -71,22 +73,23 @@ LEFT JOIN THANNHAN TNH ON  TNH.MaTuNhan = TN.MaTuNhan
 WHERE TN.MaPhong IS NOT NULL AND TNH.MaTuNhan IS NULL;
 
 --5/ Tìm danh sách những tù nhân có đánh giá tốt 
-SELECT TN.MaTuNhan, TN.HoTen
+SELECT TN.MaTuNhan, TN.HoTen, CT.DanhGia
+FROM TUNHAN TN 
+JOIN CAITAO CT ON CT.MaTuNhan =  TN.MaTuNhan
 WHERE TN.MaTuNhan NOT IN (
 	SELECT CT.MaTuNhan
     FROM CAITAO CT 
-    WHERE CT.DanhGia = N'Kém' AND CT.DanhGia = N'Trung bình' AND CT.DanhGia = N'Khá'
+    WHERE CT.DanhGia = N'Kém' OR CT.DanhGia = N'Trung bình' OR CT.DanhGia = N'Khá'
 );
 
 --Câu 4: Stored Procedure - Tìm danh sách tù nhân theo giới tính 
-CREATE PROC sp_gioitinh_select @GioiTinh nvarchar(5)
+CREATE PROC sp_gioitinh_select @GioiTinh nvarchar(5) = N'Nữ'
 AS BEGIN 
 	SELECT MaTuNhan, SoCCCD, HoTen, GioiTinh
 	FROM TUNHAN
 	WHERE GioiTinh = @GioiTinh 
 END;
-
-sp_gioitinh_select Nữ;
+sp_gioitinh_select;
 sp_gioitinh_select Nam;
 
 --Câu 4: Stored Procedure - Tìm thông tin tù nhân ở tù sớm nhất 
