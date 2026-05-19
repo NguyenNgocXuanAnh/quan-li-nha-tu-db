@@ -98,41 +98,34 @@ WHERE PG.MaKV = 'KVA'
 
 
 --Câu 4: 2 thủ tục, 2 hàm, 1 trigger
--- Thủ tục 1: Cập nhật trạng thái tù nhân khi đến ngày mãn hạn
-CREATE PROC sp_CapNhatManHanTuDong
+-- Thủ tục 1: Thủ tục xóa thân nhân dựa trên mã tù nhân
+CREATE PROC sp_XoaThanNhanTheoTuNhan
+    @MaTuNhan VARCHAR(10)
 AS
 BEGIN
-    SET NOCOUNT ON;
     
-    -- Cập nhật tù nhân đã mãn hạn
-    UPDATE TUNHAN
-    SET TrangThai = N'Đã mãn hạn',
-        NgayXuatTrai = GETDATE(),
-        MaPhong = NULL
-    WHERE TrangThai = N'Đang thi hành án'
-      AND MaTuNhan IN (
-          SELECT MaTuNhan FROM BANAN
-          WHERE NgayKetThucDuKien <= GETDATE()
-      );
+    -- Kiểm tra tù nhân có tồn tại không
+    IF NOT EXISTS (SELECT 1 FROM TUNHAN WHERE MaTuNhan = @MaTuNhan)
+    BEGIN
+        RAISERROR(N'Tù nhân không tồn tại!', 16, 1);
+        RETURN;
+    END
     
-    -- Cập nhật lại số lượng hiện tại cho các phòng bị ảnh hưởng
-    UPDATE PHONGGIAM
-    SET SoLuongHienTai = (
-        SELECT COUNT(*) FROM TUNHAN
-        WHERE MaPhong = PHONGGIAM.MaPhong
-          AND TrangThai = N'Đang thi hành án'
-    );
-   SELECT N'Đã cập nhật tù nhân mãn hạn thành công!' AS ThongBao;
+    -- Xóa thân nhân
+    DELETE FROM THANNHAN
+    WHERE MaTuNhan = @MaTuNhan;
+    
+    -- In ra số lượng đã xóa
+    PRINT N'Đã xóa thân nhân của tù nhân: ' + @MaTuNhan;
 END;
-  
 
-EXEC sp_CapNhatManHanTuDong;
+-- Xóa thân nhân của tù nhân TN005
+EXEC sp_XoaThanNhanTheoTuNhan 'TN005';
+
+-- Kiểm tra lại
+SELECT * FROM THANNHAN WHERE MaTuNhan = 'TN005';
 
 
--- Kiểm tra kết quả
-SELECT MaTuNhan, HoTen, TrangThai, NgayXuatTrai
-FROM TUNHAN
-WHERE TrangThai = N'Đã mãn hạn';
 
 --Thủ tục 2: Thống kê vi phạm theo hình thức xử lý
 CREATE PROC sp_ThongKeViPhamTheoHinhThuc
@@ -153,24 +146,20 @@ END;
 -- Chạy thủ tục thống kê vi phạm
 EXEC sp_ThongKeViPhamTheoHinhThuc;
 
--- Hàm 1: Thống kê số lượng tù nhân theo mức độ nguy hiểm và trạng thái
+--Hàm 1: Đếm số tù nhân đang thi hành án trong 1 phòng
 
-CREATE FUNCTION fn_TUNHAN_ThongKe()
-RETURNS TABLE
+CREATE FUNCTION fn_DemTuNhanTrongPhong (@MaPhong VARCHAR(10))
+RETURNS INT
 AS
-RETURN
-(
-    SELECT 
-        MucDoNguyHiem,
-        TrangThai,
-        COUNT(*) AS SoLuong
+BEGIN
+    DECLARE @SoLuong INT;
+    
+    SELECT @SoLuong = COUNT(*)
     FROM TUNHAN
-    GROUP BY MucDoNguyHiem, TrangThai
-);
-
-SELECT *
-FROM dbo.fn_TUNHAN_ThongKe()
-ORDER BY MucDoNguyHiem, SoLuong DESC;
+    WHERE MaPhong = @MaPhong AND TrangThai = N'Đang thi hành án';
+    
+    RETURN @SoLuong;
+END;
 
 -- Hàm 2: Thống kê hiệu suất sử dụng phòng giam theo khu vực
 CREATE FUNCTION fn_PHONGGIAM_ThongKe()
