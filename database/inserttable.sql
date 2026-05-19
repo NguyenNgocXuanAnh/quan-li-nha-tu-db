@@ -398,7 +398,7 @@ VALUES
 ('VP018', 'TN025', '2025-12-04', N'Tàng trữ điện thoại trái phép', N'Biệt giam 7 ngày', N'Thu giữ tang vật'),
 ('VP019', 'TN027', '2026-01-18', N'Cãi nhau với phạm nhân khác', N'Cảnh cáo', N'Không gây thương tích'),
 ('VP020', 'TN029', '2026-03-27', N'Hút thuốc trong phòng giam', N'Lao động công ích', N'Vi phạm lần đầu');
-DELETE FROM TAIKHOAN;
+
 INSERT INTO [TAIKHOAN] ([MaTaiKhoan], [TenDangNhap], [MatKhau], [VaiTro], [MaQuanNguc], [TrangThai])
 VALUES
 ('TK001','admin','Admin_2026',N'Admin',NULL,N'Hoạt động'),
