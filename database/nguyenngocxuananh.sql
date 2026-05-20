@@ -181,5 +181,6 @@ GRANT DELETE ON LICHTHAMNUOI TO thannhan_user;
 --Từ chối quyền thêm của thannhan_user 
 DENY INSERT ON dbo.LICHTHAMNUOI TO thannhan_user;
 --Thu hồi quyền sửa, xóa của thannhan_user
-
+REVOKE UPDATE ON dbo.LICHTHAMNUOI FROM thannhan_user;
+REVOKE DELETE ON dbo.LICHTHAMNUOI FROM thannhan_user;
 
