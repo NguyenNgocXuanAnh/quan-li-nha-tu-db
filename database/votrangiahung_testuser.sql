@@ -1,12 +1,39 @@
-USE QLNT;
+﻿USE QLNT;
 
-SELECT * 
-FROM TUNHAN;
+SELECT * FROM TUNHAN;
+
+SELECT * FROM THANNHAN;
+
+SELECT * FROM KHUVUC;
+
+SELECT * FROM PHONGGIAM;
+
+SELECT * FROM LICHSUCHUYENPHONG;
+
+SELECT * FROM VIPHAMKYLUAT;
+
+SELECT * FROM THAMNUOI;
+
+SELECT * FROM LICHTHAMNUOI;
+
+SELECT * FROM CONGVIEC;
+
+SELECT * FROM CAITAO;
+
+SELECT * FROM BANAN;
+
+SELECT * FROM TOIDANH;
+
+SELECT * FROM BANAN_TOIDANH;
+
+SELECT * FROM QUANNGUC;
+
+SELECT * FROM TAIKHOAN;
 
 BEGIN TRAN
 INSERT INTO TUNHAN([MaTuNhan], [SoCCCD], [HoTen], [NgaySinh], [GioiTinh], [DiaChi], [NgayXuatTrai], [MaPhong], [TrangThai], [MucDoNguyHiem], [GhiChu])
 VALUES
-('TN031','066091234567',N'Tr?n Minh ??c','1993-10-21',N'Nam',N'Th�n 5, X� Ea Kly, Huy?n Kr�ng P?c, ??k L?k',NULL,'PC101',N'Ch? x�t x?',N'Th?p',NULL);
+('TN031','066091234567',N'Lê Minh Quốc Huy','1983-10-21',N'Nam',N'Thôn 5, Xã Ea Kly, Huyệnn Krông Pắc, Đắk Lắk',NULL,'PC101',N'Ch? xét x?',N'Th?p',NULL);
 SELECT *
 FROM TUNHAN;
 ROLLBACK;
@@ -14,5 +41,13 @@ ROLLBACK;
 BEGIN TRAN
 INSERT INTO [QUANNGUC] ([MaQuanNguc], [TenQuanNguc], [NgaySinh], [GioiTinh], [DiaChi], [SoDienThoai], [Email], [MaKV], [NgayNhanChuc], [Luong], [ChucVu], [TrangThai])
 VALUES
-('QN21',N'Nguy?n Th? Mai','1985-03-12',N'N?',N'Ph??ng L?c Th?, TP. Nha Trang, Kh�nh H�a','0982746153','mai.nguyen@prison.vn','KVA','2016-04-18',12500000,N'Tr??ng khu A',N'?ang l�m');
+('QN21',N'Nguyễn Thị Mai Hường','1985-03-12',N'Nữ',N'Phường Lộc Thọ, TP. Nha Trang, Khánh Hòa','0982746153','mai.nguyen@prison.vn','KVA','2016-04-18',12500000,N'Tr??ng khu A',N'?ang làm');
+ROLLBACK;
+
+BEGIN TRAN
+UPDATE THANNHAN
+SET SoDienThoai = '0960018923'
+WHERE MaThanNhan = 'TNH012';
+SELECT *
+FROM THANNHAN
 ROLLBACK;
