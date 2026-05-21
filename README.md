@@ -11,9 +11,9 @@
 4. Bùi Huỳnh Anh Kiệt - 66131655
 
 ## 🗂️ Tổng quan về hệ thống
-Hệ thống quản lý nhà tù được xây dựng nhằm hỗ trợ việc lưu trữ và quản lý thông tin trong trại giam một cách hiệu quả và chính xác.
+Hệ thống quản lí nhà tù được xây dựng nhằm hỗ trợ việc lưu trữ và quản lí thông tin trong trại giam một cách hiệu quả và chính xác.
 
-Hệ thống cho phép quản lý các đối tượng chính như phạm nhân, quản giáo, phòng giam, khu giam giữ, cùng các hoạt động liên quan như thăm nuôi, kỷ luật và cải tạo.
+Hệ thống cho phép quản lí các đối tượng chính như phạm nhân, quản giáo, phòng giam, khu giam giữ, cùng các hoạt động liên quan như thăm nuôi, kỷ luật và cải tạo.
 
 Dữ liệu được tổ chức trong cơ sở dữ liệu quan hệ, giúp dễ dàng truy vấn, thống kê và đảm bảo tính nhất quán.
 
