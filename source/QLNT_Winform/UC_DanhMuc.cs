@@ -14,8 +14,15 @@ namespace QLNT_Winform
 
         public UC_DanhMuc()
         {
-            InitializeComponent();
-            LoadData();
+            try
+            {
+                InitializeComponent();
+                LoadData();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi khởi tạo giao diện Danh Mục: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void InitializeComponent()
@@ -45,9 +52,16 @@ namespace QLNT_Winform
 
         private void LoadData()
         {
-            dgvToiDanh.DataSource = db.ExecuteQuery("SELECT * FROM TOIDANH");
-            dgvCongViec.DataSource = db.ExecuteQuery("SELECT * FROM CONGVIEC");
-            dgvTaiKhoan.DataSource = db.ExecuteQuery("SELECT * FROM TAIKHOAN");
+            try
+            {
+                dgvToiDanh.DataSource = db.ExecuteQuery("SELECT * FROM TOIDANH");
+                dgvCongViec.DataSource = db.ExecuteQuery("SELECT * FROM CONGVIEC");
+                dgvTaiKhoan.DataSource = db.ExecuteQuery("SELECT * FROM TAIKHOAN");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi khi tải dữ liệu Danh Mục: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

@@ -14,8 +14,15 @@ namespace QLNT_Winform
 
         public UC_CanBo()
         {
-            InitializeComponent();
-            LoadData();
+            try
+            {
+                InitializeComponent();
+                LoadData();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi khởi tạo giao diện Cán Bộ: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void InitializeComponent()
@@ -47,9 +54,16 @@ namespace QLNT_Winform
 
         private void LoadData()
         {
-            dgvQuanNguc.DataSource = db.ExecuteQuery("SELECT * FROM QUANNGUC");
-            dgvPhongGiam.DataSource = db.ExecuteQuery("SELECT * FROM PHONGGIAM");
-            dgvKhuVuc.DataSource = db.ExecuteQuery("SELECT * FROM KHUVUC");
+            try
+            {
+                dgvQuanNguc.DataSource = db.ExecuteQuery("SELECT * FROM QUANNGUC");
+                dgvPhongGiam.DataSource = db.ExecuteQuery("SELECT * FROM PHONGGIAM");
+                dgvKhuVuc.DataSource = db.ExecuteQuery("SELECT * FROM KHUVUC");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi khi tải dữ liệu Cán Bộ: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

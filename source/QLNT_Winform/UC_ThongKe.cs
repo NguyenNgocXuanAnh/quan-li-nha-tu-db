@@ -14,8 +14,15 @@ namespace QLNT_Winform
 
         public UC_ThongKe()
         {
-            InitializeComponent();
-            LoadData();
+            try
+            {
+                InitializeComponent();
+                LoadData();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi khởi tạo giao diện Thống Kê: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void InitializeComponent()
@@ -45,12 +52,19 @@ namespace QLNT_Winform
 
         private void LoadData()
         {
-            // Call SQL Functions
-            dgvPhongGiam.DataSource = db.ExecuteQuery("SELECT * FROM dbo.fn_PHONGGIAM_ThongKe()");
-            dgvToiDanh.DataSource = db.ExecuteQuery("SELECT * FROM dbo.fn_TOIDANH_ThongKe()");
-            
-            // Call SQL Procedure
-            dgvViPham.DataSource = db.ExecuteStoredProcedureQuery("sp_ThongKeViPhamTheoHinhThuc");
+            try
+            {
+                // Call SQL Functions
+                dgvPhongGiam.DataSource = db.ExecuteQuery("SELECT * FROM dbo.fn_PHONGGIAM_ThongKe()");
+                dgvToiDanh.DataSource = db.ExecuteQuery("SELECT * FROM dbo.fn_TOIDANH_ThongKe()");
+                
+                // Call SQL Procedure
+                dgvViPham.DataSource = db.ExecuteStoredProcedureQuery("sp_ThongKeViPhamTheoHinhThuc");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi khi tải dữ liệu Thống Kê: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }
