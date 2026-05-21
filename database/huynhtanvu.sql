@@ -24,24 +24,8 @@ WHERE YEAR(NgayTham) = 2025
 GROUP BY MaQuanNgucDuyet
 ORDER BY COUNT(*) DESC
 
---4. Tìm phòng giam có số lượng tù nhân đang thi hành án nhiều nhất (dùng MAX)
-SELECT PG.MaPhong, QN.TenQuanNguc, COUNT(TN.MaTuNhan) AS SoTuNhan
-FROM PHONGGIAM PG
-JOIN QUANNGUC QN ON PG.MaQuanNguc = QN.MaQuanNguc
-JOIN TUNHAN TN ON PG.MaPhong = TN.MaPhong
-WHERE TN.TrangThai = N'Đang thi hành án'
-GROUP BY PG.MaPhong, QN.TenQuanNguc
-HAVING COUNT(TN.MaTuNhan) = (
-    SELECT MAX(SoTuNhan)
-    FROM (
-        SELECT COUNT(MaTuNhan) AS SoTuNhan
-        FROM TUNHAN
-        WHERE TrangThai = N'Đang thi hành án'
-        GROUP BY MaPhong
-    ) AS Dem
-)
 
--- 5. Tìm thân nhân đi thăm nuôi nhiều nhất
+-- 4. Tìm thân nhân đi thăm nuôi nhiều nhất
 SELECT *
 FROM (
     SELECT TN.MaThanNhan, TN.HoTenThanNhan, COUNT(TM.NgayTham) AS SoLanTham
@@ -253,3 +237,21 @@ WHERE MaTuNhan = USER_NAME(); -- Lấy mã tù nhân từ user đang đăng nh�
 -- Cho phép xem lịch thăm nuôi của chính mình
 GRANT SELECT ON LICHTHAMNUOI TO user_tunhan;
 GRANT SELECT ON THANNHAN TO user_tunhan;
+-- Tạo quản ngục trưởng khu và khó phu
+CREATE LOGIN qn_truong WITH PASSWORD = 'qn123456';	
+USE QLNT;
+CREATE USER qn_truong_user FOR LOGIN qn_truong;
+GRANT SELECT, INSERT, UPDATE ON TUNHAN TO qn_truong_user;
+GRANT SELECT, INSERT, UPDATE ON PHONGGIAM TO qn_truong_user;
+GRANT SELECT, INSERT, UPDATE ON KHUVUC TO qn_truong_user;
+GRANT SELECT, INSERT, UPDATE ON BANAN TO qn_truong_user;
+GRANT SELECT, INSERT, UPDATE ON BANAN_TOIDANH TO qn_truong_user;
+GRANT SELECT, INSERT, UPDATE ON TOIDANH TO qn_truong_user;
+GRANT SELECT, INSERT, UPDATE ON CAITAO TO qn_truong_user;
+GRANT SELECT, INSERT, UPDATE ON CONGVIEC TO qn_truong_user;
+GRANT SELECT, INSERT, UPDATE ON VIPHAMKYLUAT TO qn_truong_user;
+GRANT SELECT, INSERT, UPDATE ON THANNHAN TO qn_truong_user;
+GRANT SELECT, INSERT, UPDATE ON THAMNUOI TO qn_truong_user;
+GRANT SELECT, INSERT, UPDATE ON LICHTHAMNUOI TO qn_truong_user;
+GRANT SELECT, INSERT, UPDATE ON LICHSUCHUYENPHONG TO qn_truong_user;
+GRANT SELECT, INSERT, UPDATE ON QUANNGUC TO qn_truong_user;
