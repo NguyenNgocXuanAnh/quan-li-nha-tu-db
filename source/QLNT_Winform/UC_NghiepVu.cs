@@ -15,8 +15,15 @@ namespace QLNT_Winform
 
         public UC_NghiepVu()
         {
-            InitializeComponent();
-            LoadData();
+            try
+            {
+                InitializeComponent();
+                LoadData();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi khởi tạo giao diện Nghiệp Vụ: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void InitializeComponent()
@@ -50,10 +57,17 @@ namespace QLNT_Winform
 
         private void LoadData()
         {
-            dgvThamNuoi.DataSource = db.ExecuteQuery("SELECT * FROM THAMNUOI");
-            dgvLichThamNuoi.DataSource = db.ExecuteQuery("SELECT * FROM LICHTHAMNUOI");
-            dgvChuyenPhong.DataSource = db.ExecuteQuery("SELECT * FROM LICHSUCHUYENPHONG");
-            dgvCaiTao.DataSource = db.ExecuteQuery("SELECT * FROM CAITAO");
+            try
+            {
+                dgvThamNuoi.DataSource = db.ExecuteQuery("SELECT * FROM THAMNUOI");
+                dgvLichThamNuoi.DataSource = db.ExecuteQuery("SELECT * FROM LICHTHAMNUOI");
+                dgvChuyenPhong.DataSource = db.ExecuteQuery("SELECT * FROM LICHSUCHUYENPHONG");
+                dgvCaiTao.DataSource = db.ExecuteQuery("SELECT * FROM CAITAO");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi khi tải dữ liệu Nghiệp Vụ: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }
