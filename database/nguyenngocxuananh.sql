@@ -171,7 +171,16 @@ SELECT * FROM CONGVIEC;
 --Câu 5: Tạo 1 người dùng và cấp quyền
 CREATE LOGIN thannhan_qlnt WITH PASSWORD = 'Thannhan@123';
 USE QLNT;
+--Cấp quyền cho thannhan_user
 CREATE USER thannhan_user FOR LOGIN thannhan_qlnt;
 GRANT SELECT ON LICHTHAMNUOI TO thannhan_user;
 GRANT SELECT ON THANNHAN TO thannhan_user;
+GRANT INSERT ON LICHTHAMNUOI TO thannhan_user;
+GRANT UPDATE ON LICHTHAMNUOI TO thannhan_user;
+GRANT DELETE ON LICHTHAMNUOI TO thannhan_user;
+--Từ chối quyền thêm của thannhan_user 
+DENY INSERT ON dbo.LICHTHAMNUOI TO thannhan_user;
+--Thu hồi quyền sửa, xóa của thannhan_user
+REVOKE UPDATE ON dbo.LICHTHAMNUOI FROM thannhan_user;
+REVOKE DELETE ON dbo.LICHTHAMNUOI FROM thannhan_user;
 
